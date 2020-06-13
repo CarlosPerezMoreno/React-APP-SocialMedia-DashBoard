@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Country from "./country";
+import { useSelector, useDispatch } from "react-redux";
 
 const CountryListStyled = styled.div`
   display: grid;
@@ -12,39 +13,37 @@ const CountryListStyled = styled.div`
 `;
 
 function CountryList() {
-  const [countryList, setCountryList] = useState([]);
+  const dispatch = useDispatch();
+  const countryList = useSelector((state) => state.countryList);
+  console.log("my state is", countryList);
   useEffect(() => {
     fetch("http://restcountries.eu/rest/v2/all")
       .then((res) => {
         return res.json();
       })
       .then((data) => {
-        setCountryList(data);
-        console.log(data);
+        dispatch({
+          type: "SET_COUNTRY_LIST",
+          payload: data,
+        });
+        console.log(data.lenght);
       })
       .catch((err) => console.log("Error"));
   }, []);
   return (
     <CountryListStyled>
-      {countryList.map((country) => {
+      {countryList.map(({ flag, name, population, region, capital }) => {
         return (
           <Country
-            flag="https://upload.wikimedia.org/wikipedia/commons/5/51/Flag_of_North_Korea.svg"
-            name="Corea the best"
-            population={500000}
-            region="Asia"
-            capital="Pyongian"
+            key={name}
+            flag={flag}
+            name={name}
+            population={population}
+            region={region}
+            capital={capital}
           />
         );
       })}
-
-      <Country
-        flag="https://upload.wikimedia.org/wikipedia/commons/5/51/Flag_of_North_Korea.svg"
-        name="Corea the best"
-        population={500000}
-        region="Asia"
-        capital="Pyongian"
-      />
     </CountryListStyled>
   );
 }

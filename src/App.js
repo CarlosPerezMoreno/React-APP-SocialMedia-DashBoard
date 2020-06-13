@@ -2,13 +2,33 @@ import React from "react";
 import "./App.css";
 
 import CountryList from "./components/countries/country-list";
-import Country from "./components/countries/country";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+
+const initialState = {
+  countryList: [],
+};
+
+function reducer(state, act) {
+  switch (act.type) {
+    case "SET_COUNTRY_LIST": {
+      return { ...state, countryList: act.payload };
+    }
+    default: {
+      return state;
+    }
+  }
+}
+
+const store = createStore(reducer, initialState);
 
 function App() {
   return (
-    <div className="App">
-      <CountryList />
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <CountryList />
+      </div>
+    </Provider>
   );
 }
 
