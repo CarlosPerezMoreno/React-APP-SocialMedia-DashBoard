@@ -4,7 +4,9 @@ import Input from "../input/input";
 
 import { useDispatch } from "react-redux";
 
-const SearchStyled = styled.div``;
+const SearchStyled = styled.div`
+  display: flex;
+`;
 
 export default function Search() {
   const [inputValue, setInputValue] = useState("");
@@ -26,12 +28,14 @@ export default function Search() {
   };
   return (
     <div>
-      <Input
-        placeholder="Search for any country..."
-        value={inputValue}
-        onChange={filterByName}
-      />
-      {inputValue && <button onClick={clearInput}>Close</button>}
+      <SearchStyled>
+        <Input
+          placeholder="Search for any country..."
+          value={inputValue}
+          onChange={filterByName}
+        />
+        {inputValue && <button onClick={clearInput}>Close</button>}
+      </SearchStyled>
     </div>
   );
 }

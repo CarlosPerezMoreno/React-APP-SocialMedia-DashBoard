@@ -7,6 +7,7 @@ const InputStyled = styled.label`
   align-items: center;
   padding: 0 2rem;
   border-radius: 5px;
+  flex: auto;
   i {
     margin-right: 1em;
     color: black;

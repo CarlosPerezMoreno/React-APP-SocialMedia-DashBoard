@@ -2,12 +2,26 @@ import React from "react";
 import styled from "styled-components";
 import Search from "../search/search";
 
-const ActionListStyled = styled.div``;
+import { Region as FilterByRegion } from "../regions/region";
+import Wrapper from "../wrapper/wrapper";
+
+const ActionListStyled = styled.div`
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row-gap: 40px;
+  }
+`;
 
 export default function ActionList() {
   return (
     <ActionListStyled>
-      <Search />
+      <Wrapper>
+        <div className="grid">
+          <Search />
+          <FilterByRegion />
+        </div>
+      </Wrapper>
     </ActionListStyled>
   );
 }

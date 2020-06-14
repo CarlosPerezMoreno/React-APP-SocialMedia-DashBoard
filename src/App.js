@@ -6,7 +6,6 @@ import "./App.css";
 /* Components */
 
 import CountryList from "./components/countries/country-list";
-import { Region } from "./components/regions/region";
 import ActionList from "./components/actions/action-list";
 
 /* Redux */
@@ -32,7 +31,6 @@ function App() {
       <i class="far fa-moon"></i>
       <div className="App">
         <ActionList />
-        <Region />
         <CountryList />
       </div>
     </Provider>

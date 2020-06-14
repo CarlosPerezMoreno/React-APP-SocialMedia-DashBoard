@@ -1,4 +1,5 @@
 export default function reducer(state, act) {
+  console.log(state);
   switch (act.type) {
     case "SET_COUNTRY_LIST": {
       return { ...state, countryList: act.payload };
@@ -12,18 +13,17 @@ export default function reducer(state, act) {
     }
     case "FILTER_BY_REGION": {
       const { regionSelected } = act.payload;
-
       if ("" === regionSelected) {
-        return { ...state, coutryFilteredByRegion: [], filterByRegion: "" };
+        return { ...state, countryFilteredByRegion: [], filterByRegion: "" };
       }
 
-      const coutryFilteredByRegion = state.countryList.filter(
+      const countryFilteredByRegion = state.countryList.filter(
         (country) => country.region === regionSelected
       );
 
       return {
         ...state,
-        coutryFilteredByRegion,
+        countryFilteredByRegion,
         filterByRegion: regionSelected,
       };
     }
