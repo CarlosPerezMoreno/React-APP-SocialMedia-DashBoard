@@ -13,9 +13,19 @@ const CountryListStyled = styled.div`
 `;
 
 function CountryList() {
+  const [inputValue, setValue] = useState("");
   const dispatch = useDispatch();
-  const countryList = useSelector((state) => state.countryList);
-  console.log("my state is", countryList);
+
+  const countryListByName = useSelector((state) => state.countryListByName);
+
+  const countryList = useSelector((state) => {
+    if ("" !== state.filterByRegion) {
+      return state.countryFilteredByRegion;
+    }
+
+    return state.countryList;
+  });
+
   useEffect(() => {
     fetch("http://restcountries.eu/rest/v2/all")
       .then((res) => {

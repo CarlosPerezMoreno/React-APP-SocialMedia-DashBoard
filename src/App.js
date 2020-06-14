@@ -4,9 +4,13 @@ import "./App.css";
 import CountryList from "./components/countries/country-list";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
+import { Region } from "";
 
 const initialState = {
   countryList: [],
+  countryListByName: [],
+  countryFilteredByRegion: [],
+  filterByRegion: "",
 };
 
 function reducer(state, act) {
