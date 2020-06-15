@@ -7,6 +7,7 @@ import "./App.css";
 
 import CountryList from "./components/countries/country-list";
 import ActionList from "./components/actions/action-list";
+import Header from "./components/header/header";
 
 /* Redux */
 
@@ -28,11 +29,9 @@ const store = createStore(reducer, initialState);
 function App() {
   return (
     <Provider store={store}>
-      <i class="far fa-moon"></i>
-      <div className="App">
-        <ActionList />
-        <CountryList />
-      </div>
+      <Header />
+      <ActionList />
+      <CountryList />
     </Provider>
   );
 }

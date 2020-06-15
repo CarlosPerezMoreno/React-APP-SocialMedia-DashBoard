@@ -9,7 +9,7 @@ const ActionListStyled = styled.div`
   .grid {
     display: grid;
     grid-template-columns: 1fr;
-    grid-row-gap: 40px;
+    grid-row-gap: 20px;
   }
 `;
 

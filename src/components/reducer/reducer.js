@@ -1,12 +1,17 @@
 export default function reducer(state, act) {
-  console.log(state);
   switch (act.type) {
     case "SET_COUNTRY_LIST": {
       return { ...state, countryList: act.payload };
     }
 
     case "SET_COUNTRY_BY_NAME": {
-      const countryListByName = (state.countryList || []).filter((country) =>
+      let list = "";
+      if (state.filterByRegion !== "") {
+        list = state.countryFilteredByRegion;
+      } else {
+        list = state.countryList;
+      }
+      const countryListByName = list.filter((country) =>
         country.name.toLowerCase().includes(act.payload.toLowerCase())
       );
       return { ...state, countryListByName };

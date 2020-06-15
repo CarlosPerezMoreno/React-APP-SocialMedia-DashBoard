@@ -6,6 +6,15 @@ import { useDispatch } from "react-redux";
 
 const SearchStyled = styled.div`
   display: flex;
+  position: relative;
+  .close-btn {
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.05);
+  }
 `;
 
 export default function Search() {
@@ -27,15 +36,15 @@ export default function Search() {
     setInputValue("");
   };
   return (
-    <div>
-      <SearchStyled>
-        <Input
-          placeholder="Search for any country..."
-          value={inputValue}
-          onChange={filterByName}
-        />
-        {inputValue && <button onClick={clearInput}>Close</button>}
-      </SearchStyled>
-    </div>
+    <SearchStyled>
+      {inputValue && (
+        <i class="fas fa-times-circle close-btn" onClick={clearInput}></i>
+      )}
+      <Input
+        placeholder="Search for any country..."
+        value={inputValue}
+        onChange={filterByName}
+      />
+    </SearchStyled>
   );
 }
