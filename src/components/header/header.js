@@ -21,6 +21,8 @@ const HeaderStyled = styled.div`
     color: var(--dark);
   }
   .night-mode {
+    cursor: pointer;
+
     .moon {
       transform: rotate(-30deg);
       display: inline-flex;
@@ -36,7 +38,10 @@ const HeaderStyled = styled.div`
   }
 `;
 
-export default function Header() {
+export default function Header({ setNightMode, nightMode }) {
+  function handleClick() {
+    setNightMode(!nightMode);
+  }
   return (
     <HeaderStyled>
       <Wrapper>
@@ -45,11 +50,14 @@ export default function Header() {
             <h1>Country Searcher</h1>
           </Link>
           <div className="night-mode">
-            <p onClick>
-              <div className="moon">
-                <i class="far fa-moon"></i>
-                <i class="fas fa-moon"></i>
-              </div>
+            <p onClick={handleClick}>
+              <span className="moon">
+                {nightMode ? (
+                  <i class="far fa-moon"></i>
+                ) : (
+                  <i class="fas fa-moon"></i>
+                )}
+              </span>
               Night Mode
             </p>
           </div>

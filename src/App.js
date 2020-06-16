@@ -53,7 +53,7 @@ function App() {
     <main className={mainClass}>
       <Provider store={store}>
         <Router>
-          <Header />
+          <Header setNightMode={setNightMode} nightMode={nightMode} />
           <Switch>
             <Route path="/country/:id" component={CountryPage} />
             <Route path="/">
