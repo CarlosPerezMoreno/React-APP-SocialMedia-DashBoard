@@ -14,7 +14,11 @@ const HeaderStyled = styled.div`
     justify-content: space-between;
   }
   h1 {
-    font-size: 14px;
+    font-size: 24px;
+  }
+  a {
+    text-decoration: none;
+    color: var(--dark);
   }
   .night-mode {
     .moon {
@@ -23,9 +27,12 @@ const HeaderStyled = styled.div`
       margin-right: 10px;
     }
     p {
-      font-size: 12px;
+      font-size: 1rem;
       font-weight: 600;
     }
+  }
+  @media screen and (min-width: 768px) {
+    margin-bottom: 3em;
   }
 `;
 
