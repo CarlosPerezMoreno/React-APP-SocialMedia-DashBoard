@@ -53,9 +53,9 @@ export default function Header({ setNightMode, nightMode }) {
             <p onClick={handleClick}>
               <span className="moon">
                 {nightMode ? (
-                  <i class="far fa-moon"></i>
+                  <i className="far fa-moon"></i>
                 ) : (
-                  <i class="fas fa-moon"></i>
+                  <i className="fas fa-moon"></i>
                 )}
               </span>
               Night Mode

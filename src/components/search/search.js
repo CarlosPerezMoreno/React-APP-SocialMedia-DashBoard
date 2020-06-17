@@ -38,7 +38,7 @@ export default function Search() {
   return (
     <SearchStyled>
       {inputValue && (
-        <i class="fas fa-times-circle close-btn" onClick={clearInput}></i>
+        <i className="fas fa-times-circle close-btn" onClick={clearInput}></i>
       )}
       <Input
         placeholder="Search for any country..."

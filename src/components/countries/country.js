@@ -40,11 +40,20 @@ const CountryStyled = styled.div`
   }
 `;
 
-function Country({ flag, name, population, region, capital }) {
+function Country({
+  flag,
+  name,
+  population,
+  region,
+  capital,
+  nativeName,
+  cioc,
+  alpha2Code,
+}) {
   //Route click path
   const history = useHistory();
   function handleClick() {
-    history.push(`/country/${slugify(name)}`);
+    history.push(`/country/${slugify(alpha2Code)}`);
   }
 
   return (

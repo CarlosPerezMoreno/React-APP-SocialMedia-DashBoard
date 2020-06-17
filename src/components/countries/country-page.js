@@ -25,19 +25,19 @@ const CountryPageStyled = styled.div`
 
 export default function CountryPage({ match, history }) {
   let DBcountry = useSelector((state) =>
-    state.countryList.find(
-      (item) => item.name === match.params.id.replace("-", " ")
-    )
+    state.countryList.find((item) => item.alpha2Code === match.params.id)
   );
 
   const [country, setCountry] = useState(DBcountry);
 
   useEffect(() => {
     if (!country) {
-      fetch(`https://restcountries.eu/rest/v2/name/${match.params.id}`)
+      fetch(
+        `https://restcountries.eu/rest/v2/alpha/${match.params.id.toLowerCase()}`
+      )
         .then((res) => res.json())
         .then((data) => {
-          setCountry(data[0]);
+          setCountry(data);
         });
     }
   }, [country, match.params.id]);
@@ -50,7 +50,7 @@ export default function CountryPage({ match, history }) {
     <CountryPageStyled>
       <Wrapper>
         <button className="return-btn" onClick={handleClick}>
-          <i class="fas fa-arrow-left"></i>Return
+          <i className="fas fa-arrow-left"></i>Return
         </button>
         <CountrySelected {...country} />
       </Wrapper>
